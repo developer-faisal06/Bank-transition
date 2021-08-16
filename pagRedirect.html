@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- tailwind css  -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <title>Baper bank</title>
+</head>
+
+<body>
+    <!-- balence  -->
+    <header class="bg-pink-500 h-40  ">
+        <h1 class="text-white mx-auto text-center pt-10 text-5xl">You Have accessed to hear </h1>
+    </header>
+    <main class="bg-green-100 p-10  mx-auto">
+        <section class="grid grid-flow-col gap-4 ">
+            <div class="bg-blue-300 p-5 text-white rounded-2xl">
+                <h1 class="text-2xl">Deposit</h1>
+                <h1 class="text-4xl">$<span id="diposit-total">00</span></h1>
+            </div>
+            <div class="bg-blue-400 p-5 text-white rounded-2xl">
+                <h1 class="text-2xl">withdrow</h1>
+                <h1 class="text-4xl">$<span id="withdro-amaunt">00</span> </h1>
+            </div>
+            <div class="bg-blue-500 p-5 text-white rounded-2xl">
+                <h1 class="text-2xl">balence</h1>
+                <h1 class="text-4xl">$<span id="balence">200</span> </h1>
+            </div>
+
+
+        </section>
+        <!-- diposit & withdrow  -->
+
+        <section class="mt-4 grid grid grid-flow-col gap-4">
+            <!-- diposit  -->
+            <div action="" class=" bg-green-500 rounded-xl py-4">
+                <h1 class="text-2xl m-2 text-center">Please Diposit</h1>
+                <input id="diposit-input" class="inline-block w-3/4 m-2 p-2" type="text" placeholder="Amaount">
+
+                <button id="diposit-button" class="py-2 rounded-2xl px-4 m-2 text-white bg-pink-400">Deposit</button>
+
+
+            </div>
+
+            <!-- withdrow  -->
+            <div action="" class=" bg-green-400 rounded-xl py-4">
+                <h1 class="text-2xl text-center  m-2"> Withdrow</h1>
+                <input id="withdrow-input" class="inline-block w-3/4   m-2 p-3" type="text" placeholder="withdrow amaount">
+
+                <button id="withdrow-button" class="py-2 rounded-2xl px-4 m-2 text-white bg-pink-400">Withdrow</button>
+            </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <script>
+        // diposit section 
+
+        document.getElementById('diposit-button').addEventListener('click', function () {
+
+            const dipositInput = document.getElementById('diposit-input');
+
+            const newDepoText = parseFloat(dipositInput.value);
+
+            const preDipositValue = newDepoText;
+
+            //    dipositTotal 
+
+            const dipositTotal = document.getElementById('diposit-total');
+
+            const preDipositAmount = parseFloat(dipositTotal.innerText);
+
+            const newDipositTotal = preDipositAmount + preDipositValue;
+
+            dipositTotal.innerText = newDipositTotal;
+
+            // TotalAmaount 
+            const totalBalence = document.getElementById('balence');
+
+            const totalBalenceText = totalBalence.innerText;
+
+            const preTotalBalence = parseFloat(totalBalenceText);
+
+            const newTotalBalence = preTotalBalence + preDipositValue;
+
+            totalBalence.innerText = newTotalBalence;
+
+            //clear the diposit input
+            dipositInput.value = '';
+        })
+
+
+        //withdro amaount hendeler 
+        document.getElementById('withdrow-button').addEventListener('click', function () {
+
+            const withdroInputField = document.getElementById('withdrow-input');
+
+            const withdrowInputText = withdroInputField.value;
+
+            const withdrowInput = parseFloat(withdrowInputText);
+
+            console.log(withdrowInput);
+
+            console.log('widrow clicked');
+
+            const withdrowAmount = document.getElementById('withdro-amaunt');
+
+            const withdowText = parseFloat(withdrowAmount.innerText);
+
+            const totalWithdrowAmaount = withdowText + withdrowInput;
+            withdrowAmount.innerText = totalWithdrowAmaount;
+
+            // balence transiction 
+
+            const balenceTrx = document.getElementById('balence');
+
+            const balenceText = parseFloat(balenceTrx.innerText);
+
+            const totalBalenceCash = balenceText - totalWithdrowAmaount;
+
+            balenceTrx.innerText = totalBalenceCash;
+
+            console.log(totalBalenceCash);
+
+            // clear input field 
+            
+            withdroInputField.value = '';
+
+        })
+    </script>
+</body>
+
+</html>

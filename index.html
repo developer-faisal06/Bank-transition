@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,67 @@
     <!-- tailwind css  -->
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
-    <title>Document</title>
+    <title>Baper bank</title>
 </head>
+
 <body>
-    <h1>Hello World</h1>
+    <header class="bg-pink-500 h-40  ">
+        <h1 class="text-white mx-auto text-center pt-14 text-5xl">Welcome to baper bank</h1>
+    </header>
+<main class="bg-green-100 p-10">
+    <section class="from width-2/4 mx-auto mt-4">
+        <header class=""><h1 class="text-center uppercase font-black text-3xl	">Log in to Your Bank</h1></header>
+        <hr>
+
+        <div action="">
+            <input id="user-email" class="block  m-2 p-3" type="text" placeholder="email">
+            <input id="user-pass" class="block  m-2 p-3" type="password" placeholder="password">
+            <button id="login"  class="py-2 rounded-2xl px-4 m-2 text-white bg-pink-400">Submit</button>
+            <h4 id="wrong-pass" class="text-pink-500 hidden  mx-3 text-3xl">Password error, please try again</h4>
+            <h4 id="wrong-user" class="text-pink-500 hidden mx-3 text-3xl">Email  error, please try again</h4>
+            <h4 id="all-user" class="text-pink-500 hidden mx-3 text-3xl"> Please try again</h4>
+        </div>
+    </section>
+</main>
+
+<script>
+
+    document.getElementById('login').addEventListener('click', function(){
+    //    email show 
+       const userField=document.getElementById('user-email');
+       const userEmail = userField.value;
+
+       const userPasswordField=document.getElementById('user-pass');
+       const userPassword = userPasswordField.value;
+
+    //    information check
+
+    const user=document.getElementById('wrong-user');
+    const pass = document.getElementById('wrong-pass');
+    const all = document.getElementById('all-user')
+
+
+    if(userEmail == 'jahid@gmail.com' && userPassword == '1234'){
+       // page redirect 
+        window.location.href='pagRedirect.html';
+
+    }else if ( userEmail != 'jahid@gmail.com' ){
+        user.style.display='block';
+    }else if(userPassword != '1234'){
+        pass.style.display='block';
+    }else if(userEmail != 'jahid@gmail.com' && userPassword != '1234'){
+        all.style.display="block";
+    }
+     else {
+        console.log('ha')
+    }
+      
+    })
+
+   
+
+</script>
+
 </body>
+
 </html>
